@@ -5,26 +5,31 @@ import VaccData from "./BottomLeft/VaccData";
 import TitleBanner from "./TitleBanner/titleBanner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
-import {WordCloud} from './WordCloud/WordCloud'
+import { WordCloud } from "./WordCloud/WordCloud";
 
 function App() {
-  const [countryIso, setCountryIso] = useState("");
+  const [country, setCountry] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
-    if (countryIso) countryInfo.current.scrollIntoView({ behavior: "smooth" });
-  }, [countryIso]);
+    console.log(country);
+    if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
+  }, [country]);
   return (
     <div className="App">
       <TitleBanner />
-      <MainMap setCountryIso={setCountryIso} />
-      <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo} className="d-flex">
+      <MainMap setCountry={setCountry} />
+      <div
+        style={{ display: country ? "block" : "none" }}
+        ref={countryInfo}
+        className="d-flex"
+      >
         <div>
           <VaccData />
           <RecentData />
         </div>
         <div>
           <WordCloud />
-          </div>
+        </div>
       </div>
     </div>
   );
