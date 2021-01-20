@@ -5,7 +5,8 @@ import VaccData from "./BottomLeft/VaccData";
 import TitleBanner from "./TitleBanner/titleBanner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
-import { WordCloud } from "./WordCloud/WordCloud";
+import { WordCloud } from './WordCloud/WordCloud'
+import LineChart from './LineChart/LineChart'
 
 function App() {
   const [country, setCountry] = useState("");
@@ -29,7 +30,9 @@ function App() {
         </div>
         <div>
           <WordCloud />
-        </div>
+          <LineChart />
+          </div>
+
       </div>
     </div>
   );

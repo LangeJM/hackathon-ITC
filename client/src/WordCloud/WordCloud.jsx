@@ -1,11 +1,9 @@
 import React from "react";
-// import ReactDOM from "react-dom";
 import ReactWordcloud from "react-wordcloud";
-
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
-
 import words from "./words";
+import Card from "react-bootstrap/Card";
 
 const options = {
   colors: ["#0F801C", "#C2D66D", "#EBBB10", "#753902", "#C73326"],
@@ -24,13 +22,24 @@ const options = {
 };
 
 export function WordCloud() {
-  const cloudWidth = Math.round(document.body.clientWidth * 0.66); // change 0.66 to percentage of content screen width wanted
+  const cloudWidth = Math.round(document.body.clientWidth * 0.5); // change to percentage of content screen width wanted
   return (
-    <div style={{ padding: "3rem" }}>
-      <h2>World Cloud - Vaccine</h2>
-      <div style={{ height: 400, width: cloudWidth }}>
-        <ReactWordcloud options={options} words={words} />
+    <Card
+      border="light"
+      style={{
+        width: cloudWidth,
+        backgroundColor: "#D9CDB8",
+        padding: "0.5rem",
+        margin: "1rem",
+        textAlign: "center",
+      }}
+    >
+      <div style={{ backgroundColor: "white" }}>
+        <Card.Header>Word Cloud on Vaccination </Card.Header>
+        <Card.Body style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <ReactWordcloud options={options} words={words} />
+        </Card.Body>
       </div>
-    </div>
+    </Card>
   );
 }
