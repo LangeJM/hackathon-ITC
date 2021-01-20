@@ -8,17 +8,19 @@ import PopularTweets from "./BottomLeft/PopularTweets";
 import MainMap from "./Map/map";
 
 function App() {
+
   const [countryIso, setCountryIso] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
     if (countryIso) countryInfo.current.scrollIntoView({ behavior: "smooth" });
   }, [countryIso]);
+
   return (
     <div className="App">
       <TitleBanner />
       <MainMap setCountryIso={setCountryIso} />
       <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo}>
-        <VaccData />
+        <VaccData countryIso={countryIso}/>
         <RecentData />
         <PopularTweets/>
       </div>

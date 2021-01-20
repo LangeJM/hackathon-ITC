@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
 export default function RecentData() {
+  
   const [country, setCountry] = useState('Israel')
   const [positiveNum, setPositiveSum] = useState(500000)
   const [negativeNum, setNegativeSum] = useState(200000)
