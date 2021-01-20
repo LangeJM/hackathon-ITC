@@ -5,6 +5,7 @@ import VaccData from "./BottomLeft/VaccData";
 import TitleBanner from "./TitleBanner/titleBanner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
+import {WordCloud} from './WordCloud/WordCloud'
 
 function App() {
   const [countryIso, setCountryIso] = useState("");
@@ -16,9 +17,14 @@ function App() {
     <div className="App">
       <TitleBanner />
       <MainMap setCountryIso={setCountryIso} />
-      <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo}>
-        <VaccData />
-        <RecentData />
+      <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo} className="d-flex">
+        <div>
+          <VaccData />
+          <RecentData />
+        </div>
+        <div>
+          <WordCloud />
+          </div>
       </div>
     </div>
   );
