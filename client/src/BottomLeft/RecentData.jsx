@@ -21,7 +21,9 @@ export default function RecentData() {
       }}
     >
       <div style={{ backgroundColor: 'white' }}>
-        <Card.Header>{country} Sentiment Breakdown </Card.Header>
+        <Card.Header style={{ fontWeight: 'bold' }}>
+          {country} Sentiment Breakdown{' '}
+        </Card.Header>
         <Card.Body style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div>
             <Card.Title>Positive 🤓</Card.Title>

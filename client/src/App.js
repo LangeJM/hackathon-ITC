@@ -3,6 +3,7 @@ import RecentData from "./BottomLeft/RecentData";
 import VaccData from "./BottomLeft/VaccData";
 import TitleBanner from "./TitleBanner/titleBanner";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PopularTweets from "./BottomLeft/PopularTweets";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <TitleBanner />
       <VaccData />
       <RecentData/>
+      <PopularTweets/>
     </div>
   );
 }
