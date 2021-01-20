@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { useState, memo } from "react";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -23,7 +23,7 @@ const MapChart = ({ setTooltipContent }) => {
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
-        <ZoomableGroup>
+        <ZoomableGroup maxZoom={2}>
           <Geographies geography={geoUrl}>
             {({ geographies }) =>
               geographies.map((geo) => (
