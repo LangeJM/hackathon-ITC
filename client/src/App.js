@@ -9,16 +9,21 @@ import { WordCloud } from './WordCloud/WordCloud'
 import LineChart from './LineChart/LineChart'
 
 function App() {
-  const [countryIso, setCountryIso] = useState("");
+  const [country, setCountry] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
-    if (countryIso) countryInfo.current.scrollIntoView({ behavior: "smooth" });
-  }, [countryIso]);
+    console.log(country);
+    if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
+  }, [country]);
   return (
     <div className="App">
       <TitleBanner />
-      <MainMap setCountryIso={setCountryIso} />
-      <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo} className="d-flex">
+      <MainMap setCountry={setCountry} />
+      <div
+        style={{ display: country ? "block" : "none" }}
+        ref={countryInfo}
+        className="d-flex"
+      >
         <div>
           <VaccData />
           <RecentData />
@@ -27,6 +32,7 @@ function App() {
           <WordCloud />
           <LineChart />
           </div>
+
       </div>
     </div>
   );
