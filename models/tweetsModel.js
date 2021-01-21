@@ -24,7 +24,14 @@ module.exports = class Tweets {
 
   getPopularTweets = async () => {
     try {
-      const popularTweets = await this.tweetsCollection.find({});
-    } catch {}
+      const popularTweets = await this.tweetsCollection
+        .find({ retweets: { $gt: 0 } })
+        .sort({ retweets: -1 })
+        .project({ retweets: 1, id: 1 })
+        .toArray();
+      return popularTweets.slice(0, 5);
+    } catch (err) {
+      return err.stack;
+    }
   };
 };
