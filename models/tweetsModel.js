@@ -1,4 +1,4 @@
-const mongoUtil = require('../utils/dbConnection')
+const mongoUtil = require("../utils/dbConnection");
 
 module.exports = class Tweets {
   constructor() {
@@ -9,85 +9,85 @@ module.exports = class Tweets {
     try {
       const posReachArray = await this.tweetsCollection
         .find(
-          ISO === 'ww'
-            ? { sentiments: 'Pos' }
+          ISO === "ww"
+            ? { sentiments: "Pos" }
             : {
-                location_iso: ISO,
-                sentiments: 'Pos'
+                country_iso: ISO,
+                sentiments: "Pos",
               }
         )
         .project({ user_followers: 1 })
-        .toArray()
-      let posReachSum = 0
+        .toArray();
+      let posReachSum = 0;
       posReachArray.forEach((element) => {
-        posReachSum += element.user_followers
-      })
+        posReachSum += element.user_followers;
+      });
       const negReachArray = await this.tweetsCollection
         .find(
-          ISO === 'ww'
-            ? { sentiments: 'Neg' }
+          ISO === "ww"
+            ? { sentiments: "Neg" }
             : {
-                location_iso: ISO,
-                sentiments: 'Neg'
+                country_iso: ISO,
+                sentiments: "Neg",
               }
         )
         .project({ user_followers: 1 })
-        .toArray()
-      let negReachSum = 0
+        .toArray();
+      let negReachSum = 0;
       negReachArray.forEach((element) => {
-        negReachSum += element.user_followers
-      })
-      const reachObject = { posReachSum, negReachSum }
-      return reachObject
+        negReachSum += element.user_followers;
+      });
+      const reachObject = { posReachSum, negReachSum };
+      return reachObject;
     } catch (err) {
-      return err.stack
+      return err.stack;
     }
-  }
+  };
 
   getCount = async (ISO) => {
     try {
       const posCount = await this.tweetsCollection
         .find(
-          ISO === 'ww'
-            ? { sentiments: 'Pos' }
+          ISO === "ww"
+            ? { sentiments: "Pos" }
             : {
-                location_iso: ISO,
-                sentiments: 'Pos'
+                country_iso: ISO,
+                sentiments: "Pos",
               }
         )
-        .count()
+        .count();
       const negCount = await this.tweetsCollection
         .find(
-          ISO === 'ww'
-            ? { sentiments: 'Neg' }
+          ISO === "ww"
+            ? { sentiments: "Neg" }
             : {
-                location_iso: ISO,
-                sentiments: 'Neg'
+                country_iso: ISO,
+                sentiments: "Neg",
               }
         )
-        .count()
-      const countObject = { posCount, negCount }
-      return countObject
+        .count();
+      const countObject = { posCount, negCount };
+      return countObject;
     } catch (err) {
-      return err.stack
+      return err.stack;
     }
-  }
+  };
 
   getTweetsSentInfo = async (ISO) => {
     try {
       const tweets = await this.tweetsCollection
         .find(
-          ISO === 'ww'
+          ISO === "ww"
             ? {}
             : {
                 country_iso: ISO,
               }
         )
         .project({ date: 1, sentiments: 1 })
-        .toArray()
-      return tweets
+        .toArray();
+      return tweets;
     } catch (err) {
-      return err.stack
+      return err.stack;
     }
   };
 
