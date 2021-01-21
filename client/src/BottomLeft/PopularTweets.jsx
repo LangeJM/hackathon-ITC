@@ -6,7 +6,6 @@ export default function PopularTweets(props) {
   const [popularTweets, setPopularTweets] = useState(null);
 
   useEffect(() => {
-    console.log(props.country.iso);
     fetch("http://localhost:5000/tweets/popular/" + props.country.iso)
       .then((response) => response.json())
       .then((data) => {
