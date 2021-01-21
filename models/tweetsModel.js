@@ -21,4 +21,10 @@ module.exports = class Tweets {
       return err.stack;
     }
   };
+
+  getPopularTweets = async () => {
+    try {
+      const popularTweets = await this.tweetsCollection.find({});
+    } catch {}
+  };
 };
