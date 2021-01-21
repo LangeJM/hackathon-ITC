@@ -35,8 +35,8 @@ function App() {
             <PopularTweets />
           </div>
           <div>
-            <VaccData />
-            <RecentData />
+            <VaccData iso={country.iso} />
+            <RecentData country={country.country} />
           </div>
           <div>
             <WordCloud />
