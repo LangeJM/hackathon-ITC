@@ -7,7 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
 import { WordCloud } from "./WordCloud/WordCloud";
 import LineChart from "./LineChart/LineChart";
-import PopularTweets from "./BottomLeft/PopularTweets";
+import PopularTweets from './BottomLeft/PopularTweets';
 
 function App() {
   const [country, setCountry] = useState("");
@@ -36,7 +36,7 @@ function App() {
           </div>
           <div>
             <VaccData iso={country.iso} />
-            <RecentData country={country.country} />
+            <RecentData countryName={country.country} iso={country.iso} />
           </div>
           <div>
             <LineChart />
