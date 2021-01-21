@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Vega } from "react-vega";
 import Card from "react-bootstrap/Card";
+import axios from "axios";
 
 // chart config
 const posColor = "green";
@@ -62,7 +63,7 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
       },
       encoding: {
         x: getDateXObj(rangeLen),
-        y: getQuantitativeYObj("negTweets", "", yAxisValues),
+        y: getQuantitativeYObj("neg", "", yAxisValues),
         // Below config provides a legend, however, one layer disappears once it is toggled
         // stroke: {
         //   field: "symbol",
@@ -81,14 +82,14 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
       },
       encoding: {
         x: getDateXObj(rangeLen),
-        y: getQuantitativeYObj("neutralTweets", "", yAxisValues),
+        y: getQuantitativeYObj("neut", "", yAxisValues),
       },
     },
     {
       mark: areaMark,
       encoding: {
         x: getDateXObj(rangeLen),
-        y: getQuantitativeYObj("posTweets", "", yAxisValues),
+        y: getQuantitativeYObj("pos", "", yAxisValues),
       },
     },
   ],
@@ -97,14 +98,21 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
   },
 });
 
+const getCountrySentimentOverTime = (countryIso) => {
+  return axios({
+    method: "get",
+    url: "http://localhost:5000/tweets/" + countryIso,
+  });
+};
+
 const data = [
-  { negTweets: 12, posTweets: 5, neutralTweets: 30, date: "2019-10-01" },
-  { negTweets: 32, posTweets: 6, neutralTweets: 5, date: "2019-10-02" },
-  { negTweets: 12, posTweets: 80, neutralTweets: 5, date: "2019-10-03" },
-  { negTweets: 112, posTweets: 30, neutralTweets: 5, date: "2019-10-04" },
-  { negTweets: 12, posTweets: 5, neutralTweets: 50, date: "2019-10-05" },
-  { negTweets: 10, posTweets: 10, neutralTweets: 5, date: "2019-10-06" },
-  { negTweets: 20, posTweets: 1, neutralTweets: 5, date: "2019-10-07" },
+  { neg: 12, pos: 5, neut: 30, date: "2019-10-01" },
+  { neg: 32, pos: 6, neut: 5, date: "2019-10-02" },
+  { neg: 12, pos: 80, neut: 5, date: "2019-10-03" },
+  { neg: 112, pos: 30, neut: 5, date: "2019-10-04" },
+  { neg: 12, pos: 5, neut: 50, date: "2019-10-05" },
+  { neg: 10, pos: 10, neut: 5, date: "2019-10-06" },
+  { neg: 20, pos: 1, neut: 5, date: "2019-10-07" },
 ];
 
 const LineChart = () => {
@@ -119,9 +127,22 @@ const LineChart = () => {
     );
     return Math.max(...maxList);
   };
+  const [tweetData, setTweetData] = useState(data);
+
+  const renderLineChart = () => {
+    getCountrySentimentOverTime("").then((res) => {
+      console.log(res.data);
+      return setTweetData(res.data);
+    });
+  };
+
+  useEffect(() => {
+    console.log(`After render`);
+    renderLineChart();
+  }, []); // This should run on update but passing the state var tweetData keeps re-rendering the component even if the var hasn't changed
 
   const yAxisValues = Array.from({
-    length: yAxisMaxValueFor("posTweets", "negTweets", "neutralTweets"),
+    length: yAxisMaxValueFor("pos", "neg", "neut"),
   }).map((v, i) => i + 1);
 
   const spec = getSpec(yAxisValues, data.length);
@@ -134,7 +155,7 @@ const LineChart = () => {
         width: cloudWidth,
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
-        margin: "1rem",
+        margin: "1rem 0",
         textAlign: "center",
       }}
     >
@@ -149,7 +170,7 @@ const LineChart = () => {
               contains: "padding",
               width: cloudWidth - 30,
               height: 300,
-              data: { values: data },
+              data: { values: tweetData },
             }}
             actions={false}
           />

@@ -2,9 +2,8 @@ const Tweets = require('../models/tweetsModel')
 const tweetsInstance = new Tweets()
 
 const getSentInfoByCountry = async (req, res) => {
-  const ISO = req.params.ISO
-
-  const tweetsSentInfo = await tweetsInstance.getTweetsSentInfo(ISO)
+  const ISO = req.params.ISO;
+  const tweetsSentInfo = await tweetsInstance.getTweetsSentInfo(ISO);
   const cleanedTweetsSentInfo = tweetsSentInfo.map((tweet) => {
     tweet.date = tweet.date.toISOString().split('T')[0]
     return tweet
@@ -41,8 +40,14 @@ const getReach = async (req, res) => {
   res.json(reach)
 }
 
+const getPopularTweets = async (req, res) => {
+  const popularTweets = await tweetsInstance.getPopularTweets();
+  res.json(popularTweets);
+};
+
 module.exports = {
   getSentInfoByCountry,
   getCountByCountry,
-  getReach
-}
+  getReach,
+  getPopularTweets,
+};

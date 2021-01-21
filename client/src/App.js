@@ -10,39 +10,42 @@ import LineChart from "./LineChart/LineChart";
 import PopularTweets from './BottomLeft/PopularTweets';
 
 function App() {
-
-  const [country, setCountry] = useState('')
-  const countryInfo = useRef()
+  const [country, setCountry] = useState("");
+  const countryInfo = useRef();
   useEffect(() => {
     if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
   }, [country]);
   return (
-    <div className='App'>
+    <div className="App">
       <TitleBanner />
       <MainMap setCountry={setCountry} />
-      <div
-        style={{ display: country ? 'block' : 'none' }}
-        ref={countryInfo}
-        className='d-block'
-      >
-        <div 
-        style={{ justifyContent: 'space-evenly' }}
-        className='d-flex'>
+      <div style={{ display: country ? "block" : "none" }} ref={countryInfo}>
+        <h2
+          style={{
+            backgroundColor: "#D9CDB8",
+            display: "inline-block",
+            boxShadow: "10px 10px 3px",
+          }}
+          className="p-3"
+        >
+          {country.country}
+        </h2>
+        <div className="d-flex">
           <div>
-            <VaccData iso={country.iso}/>
-            <RecentData countryName={country.country} iso={country.iso}/>
+            <PopularTweets />
+          </div>
+          <div>
+            <VaccData iso={country.iso} />
+            <RecentData countryName={country.country} iso={country.iso} />
           </div>
           <div>
             <LineChart />
             <WordCloud />
           </div>
         </div>
-        <div>
-          <PopularTweets />
-        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

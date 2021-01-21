@@ -4,10 +4,15 @@ const router = express.Router()
 const {
   getSentInfoByCountry,
   getCountByCountry,
-  getReach
+  getReach,
+  getPopularTweets
 } = require('../controllers/tweetCtrlr')
 
 router.get('/:ISO', getSentInfoByCountry)
+
+router.get("sent/:ISO", getSentInfoByCountry);
+
+router.get("/popular", getPopularTweets);
 
 router.get('/count/:ISO', getCountByCountry)
 

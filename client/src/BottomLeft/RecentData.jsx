@@ -13,16 +13,17 @@ export default function RecentData(props) {
   const [posReach, setPosReach] = useState('')
   const [negReach, setNegReach] = useState('')
 
-  const getCount = async () => {
-    const response = await fetch(`${baseUrl}count/${props.iso}`);
+  const getCount = async (iso) => {
+    const response = await fetch(`${baseUrl}count/${iso}`);
     const data = await response.json();
+    console.log(data);
     setPositiveNum(data.posCount);
     setNegativeSum(data.negCount);
     return data;
   }
 
-  const getReach = async () => {
-    const response = await fetch(`${baseUrl}reach/${props.iso}`);
+  const getReach = async (iso) => {
+    const response = await fetch(`${baseUrl}reach/${iso}`);
     const data = await response.json();
     setPosReach(data.posReachSum);
     setNegReach(data.negReachSum);
@@ -30,26 +31,26 @@ export default function RecentData(props) {
   }
 
   useEffect(()=>{
-    getCount();
-    getReach();
+    getCount(props.iso);
+    getReach(props.iso);
   },[props])
 
   return (
     <Card
-      border='light'
+      border="light"
       style={{
-        width: '30rem',
-        backgroundColor: '#D9CDB8',
-        padding: '0.5rem',
-        margin: '1rem',
+        width: "25rem",
+        backgroundColor: "#D9CDB8",
+        padding: "0.5rem",
+        margin: "1rem",
       }}
       className="text-center"
     >
-      <div style={{ backgroundColor: 'white' }}>
-        <Card.Header style={{ fontWeight: 'bold' }}>
-          {props.countryName} Sentiment Breakdown{' '}
+      <div style={{ backgroundColor: "white" }}>
+        <Card.Header style={{ fontWeight: "bold" }}>
+          {props.countryName} Sentiment Breakdown{" "}
         </Card.Header>
-        <Card.Body style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Card.Body style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div>
             <Card.Title>Positive 🤓</Card.Title>
             <Card.Text>{positiveNum} tweets</Card.Text>
@@ -63,5 +64,5 @@ export default function RecentData(props) {
         </Card.Body>
       </div>
     </Card>
-  )
+  );
 }
