@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
-export default function RecentData() {
-  
+export default function RecentData(props) {
+
   const [country, setCountry] = useState('Israel')
   const [positiveNum, setPositiveSum] = useState(500000)
   const [negativeNum, setNegativeSum] = useState(200000)
@@ -23,7 +23,7 @@ export default function RecentData() {
     >
       <div style={{ backgroundColor: 'white' }}>
         <Card.Header style={{ fontWeight: 'bold' }}>
-          {country} Sentiment Breakdown{' '}
+          {props.countryIso} Sentiment Breakdown{' '}
         </Card.Header>
         <Card.Body style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div>
