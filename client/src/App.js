@@ -18,14 +18,26 @@ function App() {
     <div className="App">
       <TitleBanner />
       <MainMap setCountry={setCountry} />
-      <div style={{ display: country ? "flex" : "none" }} ref={countryInfo}>
-        <div>
-          <VaccData />
-          <RecentData />
-        </div>
-        <div>
-          <WordCloud />
-          <LineChart />
+      <div style={{ display: country ? "block" : "none" }} ref={countryInfo}>
+        <h2
+          style={{
+            backgroundColor: "#D9CDB8",
+            display: "inline-block",
+            boxShadow: "10px 10px 3px",
+          }}
+          className="p-3"
+        >
+          {country.country}
+        </h2>
+        <div className="d-flex">
+          <div>
+            <VaccData />
+            <RecentData />
+          </div>
+          <div>
+            <WordCloud />
+            <LineChart />
+          </div>
         </div>
       </div>
     </div>
