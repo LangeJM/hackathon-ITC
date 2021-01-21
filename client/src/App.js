@@ -7,13 +7,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
 import { WordCloud } from "./WordCloud/WordCloud";
 import LineChart from "./LineChart/LineChart";
-import PopularTweets from './BottomLeft/PopularTweets';
+import PopularTweets from "./BottomLeft/PopularTweets";
 
 function App() {
   const [country, setCountry] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
-    if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
+    if (country) {
+      setTimeout(() => {
+        countryInfo.current.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
+    }
   }, [country]);
   return (
     <div className="App">
