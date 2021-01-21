@@ -1,12 +1,39 @@
-import React from "react";
-import { useState } from "react";
-import Card from "react-bootstrap/Card";
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import Card from 'react-bootstrap/Card'
 
-export default function RecentData({ country }) {
-  const [positiveNum, setPositiveSum] = useState(500000);
-  const [negativeNum, setNegativeSum] = useState(200000);
-  const [posReach, setPosReach] = useState(1000000);
-  const [negReach, setNegReach] = useState(500000);
+export default function RecentData(props) {
+
+  const baseUrl = 'http://localhost:5000/tweets/'
+
+  const [positiveNum, setPositiveNum] = useState('')
+  const [negativeNum, setNegativeSum] = useState('')
+
+  const [posReach, setPosReach] = useState('')
+  const [negReach, setNegReach] = useState('')
+
+  const getCount = async (iso) => {
+    const response = await fetch(`${baseUrl}count/${iso}`);
+    const data = await response.json();
+    console.log(data);
+    setPositiveNum(data.posCount);
+    setNegativeSum(data.negCount);
+    return data;
+  }
+
+  const getReach = async (iso) => {
+    const response = await fetch(`${baseUrl}reach/${iso}`);
+    const data = await response.json();
+    setPosReach(data.posReachSum);
+    setNegReach(data.negReachSum);
+    return data;
+  }
+
+  useEffect(()=>{
+    getCount(props.iso);
+    getReach(props.iso);
+  },[props])
 
   return (
     <Card
@@ -21,7 +48,7 @@ export default function RecentData({ country }) {
     >
       <div style={{ backgroundColor: "white" }}>
         <Card.Header style={{ fontWeight: "bold" }}>
-          {country} Sentiment Breakdown{" "}
+          {props.countryName} Sentiment Breakdown{" "}
         </Card.Header>
         <Card.Body style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div>

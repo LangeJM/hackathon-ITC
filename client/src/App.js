@@ -13,7 +13,11 @@ function App() {
   const [country, setCountry] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
-    if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
+    if (country) {
+      setTimeout(() => {
+        countryInfo.current.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
+    }
   }, [country]);
   return (
     <div className="App">
@@ -32,11 +36,11 @@ function App() {
         </h2>
         <div className="d-flex">
           <div>
-            <PopularTweets />
+            <PopularTweets country={country} />
           </div>
           <div>
             <VaccData iso={country.iso} />
-            <RecentData country={country.country} />
+            <RecentData countryName={country.country} iso={country.iso} />
           </div>
           <div>
             <LineChart />

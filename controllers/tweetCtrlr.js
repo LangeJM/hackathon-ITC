@@ -3,7 +3,6 @@ const tweetsInstance = new Tweets();
 
 const getSentInfoByCountry = async (req, res) => {
   const ISO = req.params.ISO;
-
   const tweetsSentInfo = await tweetsInstance.getTweetsSentInfo(ISO);
   const cleanedTweetsSentInfo = tweetsSentInfo.map((tweet) => {
     tweet.date = tweet.date.toISOString().split("T")[0];
@@ -29,6 +28,26 @@ const getSentInfoByCountry = async (req, res) => {
   res.json(sentimentByDate);
 };
 
+const getCountByCountry = async (req, res) => {
+  const ISO = req.params.ISO;
+  const count = await tweetsInstance.getCount(ISO);
+  res.json(count);
+};
+
+const getReach = async (req, res) => {
+  const ISO = req.params.ISO;
+  const reach = await tweetsInstance.getReach(ISO);
+  res.json(reach);
+};
+
+const getPopularTweets = async (req, res) => {
+  const popularTweets = await tweetsInstance.getPopularTweets();
+  res.json(popularTweets);
+};
+
 module.exports = {
   getSentInfoByCountry,
+  getCountByCountry,
+  getReach,
+  getPopularTweets,
 };
