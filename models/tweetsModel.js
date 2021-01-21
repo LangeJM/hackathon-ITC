@@ -91,10 +91,10 @@ module.exports = class Tweets {
     }
   };
 
-  getPopularTweets = async () => {
+  getPopularTweets = async (ISO) => {
     try {
       const popularTweets = await this.tweetsCollection
-        .find({ retweets: { $gt: 0 } })
+        .find({ retweets: { $gt: 0 }, country_iso: ISO })
         .sort({ retweets: -1 })
         .project({ retweets: 1, id: 1 })
         .toArray();

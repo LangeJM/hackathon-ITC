@@ -41,7 +41,8 @@ const getReach = async (req, res) => {
 };
 
 const getPopularTweets = async (req, res) => {
-  const popularTweets = await tweetsInstance.getPopularTweets();
+  const ISO = req.params.ISO;
+  const popularTweets = await tweetsInstance.getPopularTweets(ISO);
   res.json(popularTweets);
 };
 

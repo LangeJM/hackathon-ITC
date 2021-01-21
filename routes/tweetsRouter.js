@@ -10,7 +10,7 @@ const {
 
 router.get("sent/:ISO", getSentInfoByCountry);
 
-router.get("/popular", getPopularTweets);
+router.get("/popular/:ISO", getPopularTweets);
 
 router.get("/count/:ISO", getCountByCountry);
 
