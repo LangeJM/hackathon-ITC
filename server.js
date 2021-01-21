@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require('cors')
 const express = require("express");
 const app = express();
 const mongoUtil = require("./utils/dbConnection");
@@ -10,6 +11,7 @@ mongoUtil.connectToDb(function (err, client) {
     const tweetsRouter = require("./routes/tweetsRouter");
 
     app.use(express.json());
+    app.use(cors())
 
     app.use("/tweets", tweetsRouter);
 
