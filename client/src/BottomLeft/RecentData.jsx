@@ -1,31 +1,29 @@
-import React from 'react'
-import { useState } from 'react'
-import Card from 'react-bootstrap/Card'
+import React from "react";
+import { useState } from "react";
+import Card from "react-bootstrap/Card";
 
-export default function RecentData(props) {
-
-  const [country, setCountry] = useState('')
-  const [positiveNum, setPositiveSum] = useState(500000)
-  const [negativeNum, setNegativeSum] = useState(200000)
-  const [posReach, setPosReach] = useState(1000000)
-  const [negReach, setNegReach] = useState(500000)
+export default function RecentData({ country }) {
+  const [positiveNum, setPositiveSum] = useState(500000);
+  const [negativeNum, setNegativeSum] = useState(200000);
+  const [posReach, setPosReach] = useState(1000000);
+  const [negReach, setNegReach] = useState(500000);
 
   return (
     <Card
-      border='light'
+      border="light"
       style={{
-        width: '30rem',
-        backgroundColor: '#D9CDB8',
-        padding: '0.5rem',
-        margin: '1rem',
+        width: "25rem",
+        backgroundColor: "#D9CDB8",
+        padding: "0.5rem",
+        margin: "1rem",
       }}
       className="text-center"
     >
-      <div style={{ backgroundColor: 'white' }}>
-        <Card.Header style={{ fontWeight: 'bold' }}>
-          {props.countryName} Sentiment Breakdown{' '}
+      <div style={{ backgroundColor: "white" }}>
+        <Card.Header style={{ fontWeight: "bold" }}>
+          {country} Sentiment Breakdown{" "}
         </Card.Header>
-        <Card.Body style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Card.Body style={{ display: "flex", justifyContent: "space-evenly" }}>
           <div>
             <Card.Title>Positive 🤓</Card.Title>
             <Card.Text>{positiveNum} tweets</Card.Text>
@@ -39,5 +37,5 @@ export default function RecentData(props) {
         </Card.Body>
       </div>
     </Card>
-  )
+  );
 }

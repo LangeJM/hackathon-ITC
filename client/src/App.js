@@ -7,17 +7,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
 import { WordCloud } from "./WordCloud/WordCloud";
 import LineChart from "./LineChart/LineChart";
-import PopularTweets from "./BottomLeft/PopularTweets"
+import PopularTweets from "./BottomLeft/PopularTweets";
 
 function App() {
-
-  const [country, setCountry] = useState('')
-  const countryInfo = useRef()
+  const [country, setCountry] = useState("");
+  const countryInfo = useRef();
   useEffect(() => {
     if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
   }, [country]);
   return (
-    <div className='App'>
+    <div className="App">
       <TitleBanner />
       <MainMap setCountry={setCountry} />
       <div style={{ display: country ? "block" : "none" }} ref={countryInfo}>
@@ -33,20 +32,20 @@ function App() {
         </h2>
         <div className="d-flex">
           <div>
-            <VaccData />
-            <RecentData />
-          </div>
-          <div>
-            <WordCloud />
-            <LineChart />
-          </div>
-          <div>
             <PopularTweets />
+          </div>
+          <div>
+            <VaccData iso={country.iso} />
+            <RecentData country={country.country} />
+          </div>
+          <div>
+            <LineChart />
+            <WordCloud />
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
