@@ -30,7 +30,6 @@ export function WordCloud() {
         width: cloudWidth,
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
-        margin: "1rem",
         textAlign: "center",
       }}
     >

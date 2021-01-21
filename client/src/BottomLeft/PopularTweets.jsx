@@ -13,7 +13,6 @@ export default function PopularTweets() {
       style={{
         width: "fit-content",
         height: "900px",
-        overflow: "scroll",
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
         margin: "1rem auto",
@@ -23,7 +22,10 @@ export default function PopularTweets() {
       <Card.Header style={{ fontWeight: "bold", backgroundColor: "white" }}>
         Popular Tweets about the Vaccine
       </Card.Header>
-      <div style={{ justifyContent: "space-evenly" }} className="d-flex-column">
+      <div
+        style={{ justifyContent: "space-evenly", overflow: "scroll" }}
+        className="d-flex-column"
+      >
         <TwitterTweetEmbed tweetId={tweet1} />
         <TwitterTweetEmbed tweetId={tweet2} />
         <TwitterTweetEmbed tweetId={tweet3} />

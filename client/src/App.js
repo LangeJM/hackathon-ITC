@@ -39,8 +39,8 @@ function App() {
             <RecentData country={country.country} />
           </div>
           <div>
-            <WordCloud />
             <LineChart />
+            <WordCloud />
           </div>
         </div>
       </div>
