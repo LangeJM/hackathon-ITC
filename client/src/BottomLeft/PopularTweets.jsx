@@ -11,7 +11,9 @@ export default function PopularTweets() {
     <Card
       border="light"
       style={{
-        width: "90%",
+        width: "fit-content",
+        height: "900px",
+        overflow: "scroll",
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
         margin: "1rem auto",
