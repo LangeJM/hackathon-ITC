@@ -6,22 +6,25 @@ export default function PopularTweets() {
 
   const [tweet1, setTweet1] = useState('1351920219321729024')
   const [tweet2, setTweet2] = useState('1351907570236190720')
-  const [tweet3, setTweet3] = useState('1351920918252167172')
+  const [tweet3, setTweet3] = useState('1352148443322605568')
 
   return (
     <Card
       border='light'
       style={{
-        width: '30rem',
+        width: '90%',
         backgroundColor: '#D9CDB8',
         padding: '0.5rem',
-        margin: '1rem',
-        textAlign: 'center'
+        margin: '1rem auto'
       }}
+      className='text-center'
     >
-      <div>
       <Card.Header style={{ fontWeight: 'bold', backgroundColor: 'white' }}>
-        Popular Tweets about the Vaccine</Card.Header>
+        Popular Tweets about the Vaccine
+      </Card.Header>
+      <div 
+      style={{justifyContent: 'space-evenly'}}
+      className='d-flex'>
         <TwitterTweetEmbed tweetId={tweet1} />
         <TwitterTweetEmbed tweetId={tweet2} />
         <TwitterTweetEmbed tweetId={tweet3} />
@@ -29,4 +32,3 @@ export default function PopularTweets() {
     </Card>
   )
 }
-

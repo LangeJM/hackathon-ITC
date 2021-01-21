@@ -17,7 +17,7 @@ export default function VaccData(props) {
         {props && (
           <iframe
             title='vaccineData'
-            src={`https://ourworldindata.org/coronavirus-data-explorer?zoomToSelection=true&time=2020-12-20..latest&country=~${props.countryIso}~SouthAmerica~NorthAmerica~EuropeanUnion~Asia~Africa&region=World&vaccinationsMetric=true&interval=total&hideControls=true&perCapita=true&smoothing=0&pickerMetric=total_vaccinations&pickerSort=desc`}
+            src={`https://ourworldindata.org/coronavirus-data-explorer?zoomToSelection=true&time=2020-12-20..latest&country=~${props.iso}~SouthAmerica~NorthAmerica~EuropeanUnion~Asia~Africa&region=World&vaccinationsMetric=true&interval=total&hideControls=true&perCapita=true&smoothing=0&pickerMetric=total_vaccinations&pickerSort=desc`}
             loading='lazy'
             style={{ width: '100%', height: '500px', border: '0px none' }}
           ></iframe>

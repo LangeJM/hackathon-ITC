@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 
 export default function RecentData(props) {
 
-  const [country, setCountry] = useState('Israel')
+  const [country, setCountry] = useState('')
   const [positiveNum, setPositiveSum] = useState(500000)
   const [negativeNum, setNegativeSum] = useState(200000)
   const [posReach, setPosReach] = useState(1000000)
@@ -18,12 +18,12 @@ export default function RecentData(props) {
         backgroundColor: '#D9CDB8',
         padding: '0.5rem',
         margin: '1rem',
-        textAlign: 'center'
       }}
+      className="text-center"
     >
       <div style={{ backgroundColor: 'white' }}>
         <Card.Header style={{ fontWeight: 'bold' }}>
-          {props.countryIso} Sentiment Breakdown{' '}
+          {props.countryName} Sentiment Breakdown{' '}
         </Card.Header>
         <Card.Body style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div>

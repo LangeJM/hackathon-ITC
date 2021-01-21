@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllTweets } = require("../controllers/tweetCtrlr");
+const { getSentInfoByCountry } = require("../controllers/tweetCtrlr");
 
-router.get("", getAllTweets);
+router.get("/:ISO", getSentInfoByCountry);
 
 module.exports = router;
