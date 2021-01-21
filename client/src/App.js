@@ -5,28 +5,44 @@ import VaccData from "./BottomLeft/VaccData";
 import TitleBanner from "./TitleBanner/titleBanner";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MainMap from "./Map/map";
-import { WordCloud } from './WordCloud/WordCloud'
-import LineChart from './LineChart/LineChart'
+import { WordCloud } from "./WordCloud/WordCloud";
+import LineChart from "./LineChart/LineChart";
+import PopularTweets from "./BottomLeft/PopularTweets";
 
 function App() {
-  const [countryIso, setCountryIso] = useState("");
+  const [country, setCountry] = useState("");
   const countryInfo = useRef();
   useEffect(() => {
-    if (countryIso) countryInfo.current.scrollIntoView({ behavior: "smooth" });
-  }, [countryIso]);
+    if (country) countryInfo.current.scrollIntoView({ behavior: "smooth" });
+  }, [country]);
   return (
     <div className="App">
       <TitleBanner />
-      <MainMap setCountryIso={setCountryIso} />
-      <div style={{ display: countryIso ? "block" : "none" }} ref={countryInfo} className="d-flex">
-        <div>
-          <VaccData />
-          <RecentData />
-        </div>
-        <div>
-          <WordCloud />
-          <LineChart />
+      <MainMap setCountry={setCountry} />
+      <div style={{ display: country ? "block" : "none" }} ref={countryInfo}>
+        <h2
+          style={{
+            backgroundColor: "#D9CDB8",
+            display: "inline-block",
+            boxShadow: "10px 10px 3px",
+          }}
+          className="p-3"
+        >
+          {country.country}
+        </h2>
+        <div className="d-flex">
+          <div>
+            <PopularTweets />
           </div>
+          <div>
+            <VaccData iso={country.iso} />
+            <RecentData country={country.country} />
+          </div>
+          <div>
+            <LineChart />
+            <WordCloud />
+          </div>
+        </div>
       </div>
     </div>
   );

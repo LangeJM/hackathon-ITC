@@ -155,7 +155,7 @@ const LineChart = () => {
         width: cloudWidth,
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
-        margin: "1rem",
+        margin: "1rem 0",
         textAlign: "center",
       }}
     >

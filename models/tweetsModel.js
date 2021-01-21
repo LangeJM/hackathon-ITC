@@ -2,12 +2,20 @@ const mongoUtil = require("../utils/dbConnection");
 
 module.exports = class Tweets {
   constructor() {
-    this.tweetsCollection = mongoUtil.getDb().collection("hackton");
+    this.tweetsCollection = mongoUtil.getDb().collection("model_2");
   }
-  getTweets = async () => {
+  getTweetsSentInfo = async (ISO) => {
     try {
-      const tweetsCursor = await this.tweetsCollection.find();
-      const tweets = await tweetsCursor.toArray();
+      const tweets = await this.tweetsCollection
+        .find(
+          ISO === "ww"
+            ? {}
+            : {
+                location_iso: ISO,
+              }
+        )
+        .project({ date: 1, sentiments: 1 })
+        .toArray();
       return tweets;
     } catch (err) {
       return err.stack;
