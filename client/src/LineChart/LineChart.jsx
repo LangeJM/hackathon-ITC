@@ -6,7 +6,7 @@ import axios from "axios";
 // chart config
 const posColor = "green";
 const negColor = "red";
-const neutralColor = "#9e9e9e";
+// const neutralColor = "#9e9e9e";
 const legendColor = "black";
 
 const areaMark = {
@@ -69,20 +69,10 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
         //   field: "symbol",
         //   type: "ordinal",
         //   scale: {
-        //     domain: ["Positive Tweets", "Negative Tweets", "Neutral Tweets"],
-        //     range: [posColor, negColor, neutralColor],
+        //     domain: ["Positive Tweets", "Negative Tweets"],
+        //     range: [posColor, negColor],
         //   },
         // },
-      },
-    },
-    {
-      mark: {
-        ...areaMark,
-        color: neutralColor,
-      },
-      encoding: {
-        x: getDateXObj(rangeLen),
-        y: getQuantitativeYObj("neut", "", yAxisValues),
       },
     },
     {
@@ -101,22 +91,21 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
 const getCountrySentimentOverTime = (countryIso) => {
   return axios({
     method: "get",
-    url: "http://localhost:5000/tweets/" + countryIso,
+    url: "http://localhost:5000/tweets/sent/" + countryIso,
   });
 };
 
 const data = [
-  { neg: 12, pos: 5, neut: 30, date: "2019-10-01" },
-  { neg: 32, pos: 6, neut: 5, date: "2019-10-02" },
-  { neg: 12, pos: 80, neut: 5, date: "2019-10-03" },
-  { neg: 112, pos: 30, neut: 5, date: "2019-10-04" },
-  { neg: 12, pos: 5, neut: 50, date: "2019-10-05" },
-  { neg: 10, pos: 10, neut: 5, date: "2019-10-06" },
-  { neg: 20, pos: 1, neut: 5, date: "2019-10-07" },
+  { neg: 12, pos: 5, date: "2019-10-01" },
+  { neg: 32, pos: 6, date: "2019-10-02" },
+  { neg: 12, pos: 80, date: "2019-10-03" },
+  { neg: 112, pos: 30, date: "2019-10-04" },
+  { neg: 12, pos: 5, date: "2019-10-05" },
+  { neg: 10, pos: 10, date: "2019-10-06" },
+  { neg: 20, pos: 1, date: "2019-10-07" },
 ];
 
-const LineChart = () => {
-  // get max value from data arary
+const LineChart = (props) => {
   const yAxisMaxValueFor = (...keys) => {
     const maxList = keys.map(
       (key) =>
@@ -129,20 +118,20 @@ const LineChart = () => {
   };
   const [tweetData, setTweetData] = useState(data);
 
-  const renderLineChart = () => {
-    getCountrySentimentOverTime("").then((res) => {
-      console.log(res.data);
-      return setTweetData(res.data);
-    });
-  };
-
   useEffect(() => {
     console.log(`After render`);
-    renderLineChart();
-  }, []); // This should run on update but passing the state var tweetData keeps re-rendering the component even if the var hasn't changed
+    console.log(`Props from App: ${props.iso}`);
+    axios({
+      method: "get",
+      url: "http://localhost:5000/tweets/sent/" + props.iso,
+    }).then((res) => {
+      console.log(res.data);
+      setTweetData(res.data);
+    });
+  }, [props.iso]); // This should run on update but passing the state var tweetData keeps re-rendering the component even if the var hasn't changed
 
   const yAxisValues = Array.from({
-    length: yAxisMaxValueFor("pos", "neg", "neut"),
+    length: yAxisMaxValueFor("pos", "neg"),
   }).map((v, i) => i + 1);
 
   const spec = getSpec(yAxisValues, data.length);
