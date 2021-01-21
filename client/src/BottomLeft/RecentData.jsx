@@ -1,14 +1,38 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 
 export default function RecentData(props) {
 
-  const [country, setCountry] = useState('')
-  const [positiveNum, setPositiveSum] = useState(500000)
-  const [negativeNum, setNegativeSum] = useState(200000)
-  const [posReach, setPosReach] = useState(1000000)
-  const [negReach, setNegReach] = useState(500000)
+  const baseUrl = 'http://localhost:5000/tweets/'
+
+  const [positiveNum, setPositiveNum] = useState('')
+  const [negativeNum, setNegativeSum] = useState('')
+
+  const [posReach, setPosReach] = useState('')
+  const [negReach, setNegReach] = useState('')
+
+  const getCount = async () => {
+    const response = await fetch(`${baseUrl}count/${props.iso}`);
+    const data = await response.json();
+    setPositiveNum(data.posCount);
+    setNegativeSum(data.negCount);
+    return data;
+  }
+
+  const getReach = async () => {
+    const response = await fetch(`${baseUrl}reach/${props.iso}`);
+    const data = await response.json();
+    setPosReach(data.posReachSum);
+    setNegReach(data.negReachSum);
+    return data;
+  }
+
+  useEffect(()=>{
+    getCount();
+    getReach();
+  },[props])
 
   return (
     <Card

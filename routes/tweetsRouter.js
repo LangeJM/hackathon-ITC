@@ -1,8 +1,16 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const { getSentInfoByCountry } = require("../controllers/tweetCtrlr");
+const {
+  getSentInfoByCountry,
+  getCountByCountry,
+  getReach
+} = require('../controllers/tweetCtrlr')
 
-router.get("/:ISO", getSentInfoByCountry);
+router.get('/:ISO', getSentInfoByCountry)
 
-module.exports = router;
+router.get('/count/:ISO', getCountByCountry)
+
+router.get('/reach/:ISO', getReach)
+
+module.exports = router
