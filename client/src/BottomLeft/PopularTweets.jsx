@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
 export default function PopularTweets() {
-  const [tweet1, setTweet1] = useState("1351920219321729024");
-  const [tweet2, setTweet2] = useState("1351907570236190720");
-  const [tweet3, setTweet3] = useState("1352148443322605568");
+  const [popularTweets, setPopularTweets] = useState(null);
 
+  useEffect(() => {
+    fetch("http://localhost:5000/tweets/popular")
+      .then((response) => response.json())
+      .then((data) => {
+        setPopularTweets(data);
+      });
+  }, []);
   return (
     <Card
       border="light"
@@ -26,9 +31,10 @@ export default function PopularTweets() {
         style={{ justifyContent: "space-evenly", overflow: "scroll" }}
         className="d-flex-column"
       >
-        <TwitterTweetEmbed tweetId={tweet1} />
-        <TwitterTweetEmbed tweetId={tweet2} />
-        <TwitterTweetEmbed tweetId={tweet3} />
+        {popularTweets &&
+          popularTweets.map((tweet) => {
+            return <TwitterTweetEmbed key={tweet.id} tweetId={tweet.id} />;
+          })}
       </div>
     </Card>
   );

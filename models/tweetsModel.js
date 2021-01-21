@@ -2,7 +2,7 @@ const mongoUtil = require('../utils/dbConnection')
 
 module.exports = class Tweets {
   constructor() {
-    this.tweetsCollection = mongoUtil.getDb().collection('model_2')
+    this.tweetsCollection = mongoUtil.getDb().collection("model_4");
   }
 
   getReach = async (ISO) => {
@@ -80,7 +80,7 @@ module.exports = class Tweets {
           ISO === 'ww'
             ? {}
             : {
-                location_iso: ISO
+                country_iso: ISO,
               }
         )
         .project({ date: 1, sentiments: 1 })
@@ -98,7 +98,7 @@ module.exports = class Tweets {
         .sort({ retweets: -1 })
         .project({ retweets: 1, id: 1 })
         .toArray();
-      return popularTweets.slice(0, 5);
+      return popularTweets.slice(0, 3);
     } catch (err) {
       return err.stack;
     }
