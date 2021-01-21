@@ -43,7 +43,7 @@ function App() {
             <RecentData countryName={country.country} iso={country.iso} />
           </div>
           <div>
-            <LineChart />
+            <LineChart iso={country.iso}/>
             <WordCloud />
           </div>
         </div>

@@ -8,7 +8,7 @@ const {
   getPopularTweets,
 } = require("../controllers/tweetCtrlr");
 
-router.get("sent/:ISO", getSentInfoByCountry);
+router.get("/sent/:ISO", getSentInfoByCountry);
 
 router.get("/popular/:ISO", getPopularTweets);
 
