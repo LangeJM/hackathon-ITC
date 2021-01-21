@@ -32,7 +32,7 @@ function App() {
         </h2>
         <div className="d-flex">
           <div>
-            <PopularTweets />
+            <PopularTweets country={country} />
           </div>
           <div>
             <VaccData iso={country.iso} />
