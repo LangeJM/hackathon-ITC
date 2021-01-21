@@ -1,39 +1,55 @@
 export default [
   {
-    text: 'told',
-    value: 64,
+    text: 'vaccinated',
+    value: 89,
   },
   {
-    text: 'mistake',
-    value: 11,
+    text: 'vaccine',
+    value: 99,
   },
   {
-    text: 'thought',
-    value: 16,
+    text: 'shots',
+    value: 53,
+  },
+  {
+    text: 'pandemic',
+    value: 78
+  },
+  {
+    text: 'quarantine',
+    value: 59
+  },
+  {
+    text: 'flatten',
+    value: 43
+  },
+  {
+    text: 'immunity',
+    value: 63
   },
   {
     text: 'bad',
-    value: 17,
+    value: 33,
   },
   {
     text: 'correct',
-    value: 10,
+    value: 22,
   },
   {
     text: 'day',
-    value: 54,
+    value: 11,
   },
   {
     text: 'prescription',
-    value: 12,
+    value: 32,
   },
   {
     text: 'time',
-    value: 77,
+    value: 54,
   },
   {
     text: 'thing',
-    value: 45,
+    value: 14,
   },
   {
     text: 'left',
@@ -164,14 +180,6 @@ export default [
     value: 59,
   },
   {
-    text: 'tooth',
-    value: 32,
-  },
-  {
-    text: 'chiropractic',
-    value: 17,
-  },
-  {
     text: 'dr',
     value: 77,
   },
@@ -204,10 +212,6 @@ export default [
     value: 11,
   },
   {
-    text: 'eye',
-    value: 13,
-  },
-  {
     text: 'test',
     value: 10,
   },
@@ -222,10 +226,6 @@ export default [
   {
     text: 'question',
     value: 20,
-  },
-  {
-    text: 'office',
-    value: 64,
   },
   {
     text: 'care',
@@ -332,28 +332,12 @@ export default [
     value: 64,
   },
   {
-    text: 'smile',
-    value: 17,
-  },
-  {
-    text: 'teeth',
-    value: 26,
-  },
-  {
     text: 'pair',
     value: 11,
   },
   {
     text: 'wanted',
     value: 20,
-  },
-  {
-    text: 'frame',
-    value: 13,
-  },
-  {
-    text: 'lasik',
-    value: 10,
   },
   {
     text: 'amazing',
@@ -372,14 +356,6 @@ export default [
     value: 49,
   },
   {
-    text: 'glasse',
-    value: 19,
-  },
-  {
-    text: 'vision',
-    value: 12,
-  },
-  {
     text: 'pressure',
     value: 16,
   },
@@ -394,109 +370,5 @@ export default [
   {
     text: 'year',
     value: 70,
-  },
-  {
-    text: 'massage',
-    value: 35,
-  },
-  {
-    text: 'best',
-    value: 54,
-  },
-  {
-    text: 'mouth',
-    value: 20,
-  },
-  {
-    text: 'staff',
-    value: 64,
-  },
-  {
-    text: 'gum',
-    value: 10,
-  },
-  {
-    text: 'chair',
-    value: 12,
-  },
-  {
-    text: 'ray',
-    value: 22,
-  },
-  {
-    text: 'dentistry',
-    value: 11,
-  },
-  {
-    text: 'canal',
-    value: 13,
-  },
-  {
-    text: 'procedure',
-    value: 32,
-  },
-  {
-    text: 'filling',
-    value: 26,
-  },
-  {
-    text: 'gentle',
-    value: 19,
-  },
-  {
-    text: 'cavity',
-    value: 17,
-  },
-  {
-    text: 'crown',
-    value: 14,
-  },
-  {
-    text: 'cleaning',
-    value: 38,
-  },
-  {
-    text: 'hygienist',
-    value: 24,
-  },
-  {
-    text: 'dental',
-    value: 59,
-  },
-  {
-    text: 'charge',
-    value: 24,
-  },
-  {
-    text: 'cost',
-    value: 29,
-  },
-  {
-    text: 'charged',
-    value: 13,
-  },
-  {
-    text: 'spent',
-    value: 17,
-  },
-  {
-    text: 'paying',
-    value: 14,
-  },
-  {
-    text: 'pocket',
-    value: 12,
-  },
-  {
-    text: 'dollar',
-    value: 11,
-  },
-  {
-    text: 'business',
-    value: 32,
-  },
-  {
-    text: 'refund',
-    value: 10,
-  },
+  }
 ];
