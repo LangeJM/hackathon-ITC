@@ -88,13 +88,6 @@ const getSpec = (yAxisValues = [], rangeLen = 0) => ({
   },
 });
 
-const getCountrySentimentOverTime = (countryIso) => {
-  return axios({
-    method: "get",
-    url: "http://localhost:5000/tweets/sent/" + countryIso,
-  });
-};
-
 const data = [
   { neg: 12, pos: 5, date: "2019-10-01" },
   { neg: 32, pos: 6, date: "2019-10-02" },
