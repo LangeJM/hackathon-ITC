@@ -12,7 +12,7 @@ Delivered as MERN App, built with
 * [MongoDB 3.6.3](https://www.mongodb.com/)
 
 ## Screenshots
-![Screenshot01](/VacciNation01.png?raw=true)
-![Screenshot02](/VacciNation02.png?raw=true)
+![Screenshot01](/screenshots/VacciNation01.png?raw=true)
+![Screenshot02](/screenshots/VacciNation02.png?raw=true)
 
 
