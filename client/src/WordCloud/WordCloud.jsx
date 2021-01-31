@@ -19,15 +19,16 @@ const options = {
   scale: "sqrt",
   spiral: "archimedean",
   transitionDuration: 1000,
+  height: "270px",
 };
 
-export function WordCloud() {
-  const cloudWidth = Math.round(document.body.clientWidth * 0.5); // change to percentage of content screen width wanted
+export function WordCloud(props) {
   return (
     <Card
       border="light"
       style={{
-        width: cloudWidth,
+        width: "auto",
+        height: "410px",
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
         textAlign: "center",

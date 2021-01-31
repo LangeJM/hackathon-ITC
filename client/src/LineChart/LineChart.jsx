@@ -135,17 +135,16 @@ const LineChart = (props) => {
   }).map((v, i) => i + 1);
 
   const spec = getSpec(yAxisValues, data.length);
-  const cloudWidth = Math.round(document.body.clientWidth * 0.5); // change to percentage of content screen width wanted
 
   return (
     <Card
       border="light"
       style={{
-        width: cloudWidth,
+        width: "auto",
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
-        margin: "1rem 0",
         textAlign: "center",
+        height: "450px",
       }}
     >
       <div style={{ backgroundColor: "white" }}>
@@ -154,11 +153,10 @@ const LineChart = (props) => {
           <Vega
             spec={{
               ...spec,
-              autosize: "fit",
+
               resize: true,
               contains: "padding",
-              width: cloudWidth - 30,
-              height: 300,
+              height: 270,
               data: { values: tweetData },
             }}
             actions={false}

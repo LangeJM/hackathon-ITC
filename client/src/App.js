@@ -19,31 +19,41 @@ function App() {
       }, 1000);
     }
   }, [country]);
+
   return (
     <div className="App">
       <TitleBanner />
       <MainMap setCountry={setCountry} />
-      <div style={{ display: country ? "block" : "none" }} ref={countryInfo}>
+      <div
+        style={{ display: country ? "block" : "none" }}
+        ref={countryInfo}
+        className="d-flex flex-column justify-content-center mx-5 mb-5"
+        width="clientWidth"
+      >
         <h2
           style={{
             backgroundColor: "#D9CDB8",
             display: "inline-block",
             boxShadow: "10px 10px 3px",
           }}
-          className="p-3"
+          className="p-3 d-flex "
         >
           {country.country}
         </h2>
-        <div className="d-flex">
-          <div>
+        <div className="widget-container d-flex justify-content-center mt-3">
+          <div className="left-column mr-3" style={{ width: "25%" }}>
             <PopularTweets country={country} />
           </div>
-          <div>
-            <VaccData iso={country.iso} />
+          <div className="mid-column" style={{ width: "25%" }}>
+            <div className="mb-3">
+              <VaccData iso={country.iso} />
+            </div>
             <RecentData countryName={country.country} iso={country.iso} />
           </div>
-          <div>
-            <LineChart iso={country.iso}/>
+          <div className="right-column ml-3" style={{ width: "50%" }}>
+            <div className="mb-3">
+              <LineChart iso={country.iso} />
+            </div>
             <WordCloud />
           </div>
         </div>
