@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { TwitterTweetEmbed } from "react-twitter-embed";
+import "./PopularTweets.css";
 
 export default function PopularTweets(props) {
   const [popularTweets, setPopularTweets] = useState(null);
@@ -16,26 +17,21 @@ export default function PopularTweets(props) {
     <Card
       border="light"
       style={{
-        width: "fit-content",
-        height: "900px",
+        width: "auto",
+        height: "876px",
         backgroundColor: "#D9CDB8",
         padding: "0.5rem",
-        margin: "1rem auto",
+        overflow: "scroll",
       }}
-      className="text-center"
+      className="text-center hide-scrollbar"
     >
-      <Card.Header style={{ fontWeight: "bold", backgroundColor: "white" }}>
-        Popular Tweets about the Vaccine
+      <Card.Header style={{ backgroundColor: "#F7F7F7" }}>
+        Popular Tweets about the Vaccine{" "}
       </Card.Header>
-      <div
-        style={{ justifyContent: "space-evenly", overflow: "scroll" }}
-        className="d-flex-column"
-      >
-        {popularTweets &&
-          popularTweets.map((tweet) => {
-            return <TwitterTweetEmbed key={tweet.id} tweetId={tweet.id} />;
-          })}
-      </div>
+      {popularTweets &&
+        popularTweets.map((tweet) => {
+          return <TwitterTweetEmbed key={tweet.id} tweetId={tweet.id} />;
+        })}
     </Card>
   );
 }
