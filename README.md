@@ -1,7 +1,7 @@
 ## Vacci-Nation 
-A webapp serving a dashboard with information about tweets around the world "discussing" the Pfizer Covid 19 vaccine.
+A MERN Stack App serving a dashboard with information about tweets around the world "discussing" the Pfizer Covid 19 vaccine.
 
-Created during a 36-hours Hackathon organized by the [Israel Tech Challenge](https://www.itc.tech/). This project took 1st place out of 15 submissions.
+This was a team effort, created as part of a 36-hours Hackathon organized by the [Israel Tech Challenge](https://www.itc.tech/). Our project took the 1st place out of 15 submissions.
 
 ## Technologies used
 NLP discourse and sentiment analysis of tweet data.  
